@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREEN PHARMA - Professional Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #1e293b; }
+        
+        .active-tab {
+            background-color: #166534 !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(22, 101, 52, 0.2);
+        }
+
+        .custom-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .status-low { border-left: 5px solid #ef4444; background: #fff1f2; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; padding: 0; margin: 0; }
+            .print-area { width: 100% !important; border: none !important; box-shadow: none !important; padding: 0 !important; }
+            .invoice-table th { background: #f8fafc !important; -webkit-print-color-adjust: exact; }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center">... (Content truncated for brevity) ...
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-6">
+        
+        ... (Content truncated for brevity) ...
+
+        <!-- SECTION: INVOICE PREVIEW -->
+        <div id="section-invoice" class="hidden no-print">
+            <div id="printable-area" class="bg-white max-w-[400px] mx-auto p-6 shadow-2xl border border-slate-100 font-mono text-[12px] print-area">
+                <div class="text-center mb-4 pb-4 border-b border-dashed">
+                    <h2 id="inv-store-name" class="text-lg font-bold"></h2>
+                    <p id="inv-store-addr" class="text-[10px] whitespace-pre-wrap"></p>
+                </div>
+                
+                <div class="mb-4">
+                    <p><b>Date:</b> <span id="inv-date"></span></p>
+                    <p><b>Bill No:</b> <span id="inv-no"></span></p>
+                    <p><b>Patient:</b> <span id="inv-cust"></span></p>
+                </div>
+
+                <table class="w-full mb-4 invoice-table">
+                    <thead class="border-b border-dashed">
+                        <tr class="text-left">
+                            <th class="py-1">Description</th>
+                            <th class="py-1 text-center">Qty</th>
+                            <th class="py-1 text-right">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inv-items">
+                        <!-- Items -->
+                    </tbody>
+                </table>
+
+                <div class="border-t border-dashed pt-2 space-y-1">
+                    <div class="flex justify-between"><span>Subtotal:</span><span id="inv-sub"></span></div>
+                    <div class="flex justify-between"><span>Tax:</span><span id="inv-tax"></span></div>
+                    <div class="flex justify-between text-sm font-bold pt-1 border-t"><span>GRAND TOTAL:</span><span id="inv-total"></span></div>
+                </div>
+
+                <div class="mt-8 text-center text-[10px]">
+                    <p>Thank you for choosing Green Pharma!</p>
+                    <p>Healing nature's way.</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-8 space-x-4">
+                <button onclick="window.print()" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold"><i class="fas fa-print mr-2"></i>PRINT BILL</button>
+                <button onclick="switchTab('pos')" class="bg-slate-200 text-slate-700 px-8 py-3 rounded-xl font-bold">NEW SALE</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        ... (Content truncated for brevity) ...
+
+        // Initialize App
+        window.onload = () => switchTab('pos');
+
+    </script>
+</body>
+</html>
